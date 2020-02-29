@@ -63,7 +63,8 @@ function insert(itm) {
 if (!window.indexedDB) {
    window.alert("Unfortunately, Your browser sucks!");
 }
-else{
+
+function additem(){
   var itm = prompt("Add an item to this list");
   if(itm && itm.length){
     insert(itm);
