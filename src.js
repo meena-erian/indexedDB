@@ -64,6 +64,7 @@ function remove(id){
     
     request.onsuccess = function(event) {
        alert("item was successfully removed from the objectStore");
+       console.log(event);
     };
 }
 
