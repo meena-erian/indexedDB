@@ -3,7 +3,18 @@ window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndex
  
 window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
 
-window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange
+window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+
+var request = window.indexedDB.open("database1");
+
+request.onerror = function(event) {
+    console.log("Error opening database:");
+    console.log(event);
+};
+         
+request.onsuccess = function(event) {
+    db = request.result;
+};
 
 function insert(itm) {
    var request = db.transaction(["todos"], "readwrite").objectStore("todo")
@@ -15,7 +26,7 @@ function insert(itm) {
    
    request.onerror = function(event) {
       alert("Something wrong happened");
-   }
+   };
 }
 
 if (!window.indexedDB) {
