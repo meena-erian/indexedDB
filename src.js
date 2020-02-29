@@ -63,8 +63,38 @@ function remove(id){
     var request = db.transaction(["toDoList"], "readwrite").objectStore("toDoList").delete(id);
     
     request.onsuccess = function(event) {
+        if(request.result){
+            alert(request.result.taskTitle);
+            console.log(request.result);
+        }
+       
+       console.log(event);
+    };
+}
+
+function read(id){
+    var request = db.transaction(["toDoList"], "readwrite").objectStore("toDoList").get(id);
+    
+    request.onsuccess = function(event) {
        alert("item was successfully removed from the objectStore");
        console.log(event);
+    };
+}
+
+function readAll() {
+    var objectStore = db.transaction("toDoList").objectStore("toDoList");
+    out = document.querySelector("#alldata");
+    out.innerHTML = "";
+    objectStore.openCursor().onsuccess = function(event) {
+       var cursor = event.target.result;
+       
+       if (cursor) {
+          out.innerHTML += "<li>" + cursor.key + "</li>";
+          console.log(cursor.value);
+          cursor.continue();
+       } else {
+          console.log("All items printed.");
+       }
     };
 }
 
@@ -84,5 +114,12 @@ function removeItem(){
     id = document.querySelector("#remId").value;
     if(id && id.length){
         remove(id);
+    }
+}
+
+function readItem(){
+    id = document.querySelector("#readId").value;
+    if(id && id.length){
+        read(id);
     }
 }
