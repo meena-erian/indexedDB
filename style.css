@@ -1,0 +1,9 @@
+body{
+  width:100%;
+  background-color:gray;
+}
+.content{
+  max-width: 600px;
+  padding:10px;
+  background-color: white;
+}
