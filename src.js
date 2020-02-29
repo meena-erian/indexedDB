@@ -5,6 +5,8 @@ window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || 
 
 window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
 
+db = {};
+
 var request = window.indexedDB.open("database1");
 
 request.onerror = function(event) {
