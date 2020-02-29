@@ -15,6 +15,7 @@ request.onerror = function(event) {
 };
          
 request.onsuccess = function(event) {
+    console.log("database opened.");
     db = request.result;
 };
 
