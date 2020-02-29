@@ -48,8 +48,7 @@ request.onupgradeneeded = function(event) {
 
 
 function insert(itm) {
-   var request = db.transaction(["toDoList"], "readwrite").objectStore("toDoList")
-   .add({taskTitle: itm});
+   var request = db.transaction(["toDoList"], "readwrite").objectStore("toDoList").add({taskTitle: itm});
    
    request.onsuccess = function(event) {
       alert("Your item was successfully added to the list. Now reload the page to make sure it's saved.");
@@ -60,6 +59,15 @@ function insert(itm) {
    };
 }
 
+function remove(id){
+    var request = db.transaction(["toDoList"], "readwrite").objectStore("toDoList").delete(id);
+    
+    request.onsuccess = function(event) {
+       alert("item was successfully removed from the objectStore");
+    };
+}
+
+
 if (!window.indexedDB) {
    window.alert("Unfortunately, Your browser sucks!");
 }
@@ -69,4 +77,11 @@ function additem(){
   if(itm && itm.length){
     insert(itm);
   }
+}
+
+function removeItem(){
+    id = document.querySelector("#remId").value;
+    if(id && id.length){
+        remove(id);
+    }
 }
