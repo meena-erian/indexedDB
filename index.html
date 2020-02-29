@@ -13,7 +13,10 @@
       <p>Source code: <a href="https://github.portacode.com/meena-erian/indexedDB/blob/master/src.js">src.js</a></p>
       <p>Raw code: <a href="https://meena-erian.github.io/indexedDB/src.js">src.js</a></p>
       <button onclick="additem();">Add</button>
+      <p>Read item by id: <input type="text" value="id" id="readId"> <button onclick="readItem();">Read</button></p>
       <p>Remove item by id: <input type="text" value="id" id="remId"> <button onclick="removeItem();">remove</button></p>
+      <p><button onclick="readAll();">Read all</button></p>
+      <p id="alldata"></p>
       <script src="src.js"></script>
     </div>
   </body>
