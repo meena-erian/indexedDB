@@ -48,8 +48,8 @@ request.onupgradeneeded = function(event) {
 
 
 function insert(itm) {
-   var request = db.transaction(["todos"], "readwrite").objectStore("todo")
-   .add(itm);
+   var request = db.transaction(["toDoList"], "readwrite").objectStore("toDoList")
+   .add({taskTitle: itm});
    
    request.onsuccess = function(event) {
       alert("Your item was successfully added to the list. Now reload the page to make sure it's saved.");
