@@ -64,11 +64,12 @@ function remove(id){
     
     request.onsuccess = function(event) {
         if(request.result){
-            alert(request.result.taskTitle);
+            alert("Item removed.");
             console.log(request.result);
         }
-       
-       console.log(event);
+        else{
+            alert("Something's wrong");
+        }
     };
 }
 
@@ -76,6 +77,13 @@ function read(id){
     var request = db.transaction(["toDoList"], "readwrite").objectStore("toDoList").get(id);
     
     request.onsuccess = function(event) {
+        if(request.result){
+            alert(request.result.taskTitle);
+            console.log(request.result);
+        }
+        else{
+            alert("Something's wrong.");
+        }
        alert("item was successfully removed from the objectStore");
        console.log(event);
     };
